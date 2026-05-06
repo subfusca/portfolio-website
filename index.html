@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carl Ashley Molina — Portfolio</title>
+  <meta name="description" content="Personal portfolio of Carl Ashley Molina — projects, skills, and interactive mini-apps."/>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"/>
+</head>
+<body>
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <a href="#home" class="nav__brand">CAM.</a>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#playground">Playground</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header id="home" class="hero">
+    <div class="hero__content">
+      <p class="hero__greet">Hi, I'm</p>
+      <h1 class="hero__name">Carl Ashley Molina</h1>
+      <h2 class="hero__role">Builder · Engineer · Lifelong Learner</h2>
+      <p class="hero__tagline">
+        I build clean, useful software — and tinker with ideas in between.
+        Welcome to my corner of the internet.
+      </p>
+      <div class="hero__cta">
+        <a href="#projects" class="btn btn--primary">View Projects</a>
+        <a href="#contact" class="btn btn--ghost">Get in Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <h2 class="section__title">About</h2>
+    <div class="about">
+      <p>
+        I'm passionate about building things that solve real problems.
+        I enjoy working across the stack — from designing intuitive UIs
+        to wiring up backend services and integrating APIs. Outside of
+        work, I love experimenting with side projects (some of which
+        live in the Playground below 👇).
+      </p>
+      <div class="skills">
+        <span class="chip">JavaScript</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">Python</span>
+        <span class="chip">React</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">SQL</span>
+        <span class="chip">REST APIs</span>
+        <span class="chip">Git</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="section">
+    <h2 class="section__title">Projects</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Project One</h3>
+        <p>A short description of what this project does and the tech behind it.</p>
+        <div class="card__tags">
+          <span class="tag">React</span><span class="tag">Node</span>
+        </div>
+        <div class="card__links">
+          <a href="#" target="_blank" rel="noopener">Live</a>
+          <a href="#" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Project Two</h3>
+        <p>Another awesome thing you built — describe the impact in one sentence.</p>
+        <div class="card__tags">
+          <span class="tag">Python</span><span class="tag">FastAPI</span>
+        </div>
+        <div class="card__links">
+          <a href="#" target="_blank" rel="noopener">Live</a>
+          <a href="#" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Project Three</h3>
+        <p>Tell the story: problem → approach → outcome.</p>
+        <div class="card__tags">
+          <span class="tag">TypeScript</span><span class="tag">SQL</span>
+        </div>
+        <div class="card__links">
+          <a href="#" target="_blank" rel="noopener">Live</a>
+          <a href="#" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PLAYGROUND ============ -->
+  <section id="playground" class="section">
+    <h2 class="section__title">Playground</h2>
+    <p class="section__sub">Mini interactive experiments — try them right here.</p>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab tab--active" data-tab="weather">🌤️ Weather</button>
+      <button class="tab" data-tab="github">🐙 GitHub Lookup</button>
+      <button class="tab" data-tab="password">🔐 Password Gen</button>
+    </div>
+
+    <!-- Weather mini-app -->
+    <div class="panel panel--active" id="panel-weather">
+      <h3>Weather (Open-Meteo API)</h3>
+      <p class="muted">Enter any city — uses free, key-less APIs.</p>
+      <div class="row">
+        <input id="weatherCity" type="text" placeholder="e.g. Taipei" />
+        <button id="weatherBtn" class="btn btn--primary">Get Weather</button>
+      </div>
+      <div id="weatherResult" class="result"></div>
+    </div>
+
+    <!-- GitHub mini-app -->
+    <div class="panel" id="panel-github">
+      <h3>GitHub Profile Viewer</h3>
+      <p class="muted">Look up any public GitHub user.</p>
+      <div class="row">
+        <input id="ghUser" type="text" placeholder="e.g. torvalds" />
+        <button id="ghBtn" class="btn btn--primary">Look Up</button>
+      </div>
+      <div id="ghResult" class="result"></div>
+    </div>
+
+    <!-- Password generator -->
+    <div class="panel" id="panel-password">
+      <h3>Password Generator</h3>
+      <p class="muted">Generates locally — nothing leaves your browser.</p>
+      <div class="row row--wrap">
+        <label>Length: <input id="pwLen" type="number" min="4" max="64" value="16" /></label>
+        <label><input id="pwUpper" type="checkbox" checked /> A-Z</label>
+        <label><input id="pwLower" type="checkbox" checked /> a-z</label>
+        <label><input id="pwNum" type="checkbox" checked /> 0-9</label>
+        <label><input id="pwSym" type="checkbox" checked /> !@#</label>
+        <button id="pwBtn" class="btn btn--primary">Generate</button>
+      </div>
+      <div id="pwResult" class="result"></div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section">
+    <h2 class="section__title">Contact</h2>
+    <p>Feel free to reach out — I'm always happy to chat.</p>
+    <div class="links">
+      <a href="mailto:carl.ashley.molina@sanalabs.com">📧 Email</a>
+      <a href="https://github.com/" target="_blank" rel="noopener">🐙 GitHub</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">💼 LinkedIn</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Carl Ashley Molina · Built with ❤️ and vanilla JS</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
