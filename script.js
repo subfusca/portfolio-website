@@ -36,18 +36,18 @@ async function getWeather() {
   if (!city) return;
   weatherResult.innerHTML = "Loading...";
   try {
-    // 1. Geocode
+    // 1. Geocode city name to lat/lon
     const geoRes = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`
     );
     const geo = await geoRes.json();
-    if (!geo.results?.length) {
+    if (!geo.results || !geo.results.length) {
       weatherResult.innerHTML = `<p>City not found.</p>`;
       return;
     }
     const { latitude, longitude, name, country } = geo.results[0];
 
-    // 2. Weather
+    // 2. Fetch current weather
     const wRes = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`
     );
